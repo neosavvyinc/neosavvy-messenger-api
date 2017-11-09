@@ -1,0 +1,74 @@
+{
+	"info": {
+		"name": "NeosavvyMessengerAPI",
+		"_postman_id": "16eb1548-1910-5c35-6e4c-59c213b14841",
+		"description": "### NEOSAVVY MESSENGER API \n\nCollection to help verify a variety of language implementations of the same API.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"description": "",
+			"item": [
+				{
+					"name": "Add User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"aparrish\",\n\t\"password\": \"testpass\"\n}"
+						},
+						"url": {
+							"raw": "http://{{hostname}}:{{port}}/users",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"users"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t'username': 'aparrish',\n\t'password': 'testpass'\n}"
+						},
+						"url": {
+							"raw": "http://{{hostname}}:{{port}}/users",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"users"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
