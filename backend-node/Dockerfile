@@ -1,7 +1,11 @@
 FROM node:8
 
 WORKDIR /src/app
+
 COPY package.json ./
+COPY ./.babelrc ./
+COPY package-lock.json ./
+COPY ./src ./src
+
 RUN ["npm", "install"]
-COPY ./src ./
-CMD ["node", "--harmony", "./app.js"]
+CMD ["npm", "start"]

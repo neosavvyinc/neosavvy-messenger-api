@@ -9,7 +9,7 @@ const db = mysql.createPool({
     database: 'challenge',
 });
 
-app.get('/health', function (request, response) {
+app.get('/health', (request, response) => {
     response.json({
         'status': 'ok'
     });

@@ -1,29 +1,10 @@
-# challenge-eng-base
+### Neosavvy Messenger API
 
-This starter kit currently supports `React` for the frontend and `Go`, `Python`, `Java`, or `Node` for the backend.
+This project aims to help demonstrate my capabilities via the implementation of
+a messenger API in a few programming languages. 
 
-To get the project up and running:
-1. Install Docker https://docs.docker.com/engine/installation/
-2. In a terminal, go to the directory `challenge-eng-base-master`
-3. Edit `docker-compose.yml`. Change `services: backend: build:` based on your preferred language. Options are `backend-golang`, `backend-python`, `backend-java`, or `backend-node`.
-4. For a backend project
-    1. `docker-compose up backend`
-    2. Test that it's running http://localhost:18000/test
-5. For a fullstack project
-    1. `docker-compose up fullstack`
-    2. Test that it's running http://localhost:13000/test
+Instructions for what is being attempted can be found in the [Instructions](./instructions.md)
 
-To restart the project
+The todo list for accomplishing thie goals in a reasonable period of time can be [found here](./todo.md)
 
-    docker-compose down
-    docker-compose up <backend or fullstack>
-
-To see schema changes, remove the old db volume by adding `-v` when stopping
-
-    docker-compose down -v
-
-To see code changes, rebuild by adding `--build` when starting
-
-    docker-compose up --build <backend or fullstack>
-
-If you run into issues connecting to the db on startup, try restarting (without the `-v` flag).
+There are a number of technologies I'll be learning quite a bit about as I go along and I'll keep [notes on my findings](./findings.md)

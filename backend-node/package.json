@@ -1,7 +1,15 @@
 {
+    "scripts": {
+        "build": "babel src -d dist",
+        "start": "rm -rf ./dist && npm run build && node ./dist/app.js"
+    },
     "dependencies": {
         "express": "^4.15.3",
         "body-parser": "^1.17.2",
         "mysql": "^2.13.0"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-preset-env": "^1.6.1"
     }
 }
