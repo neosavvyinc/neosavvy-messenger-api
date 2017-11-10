@@ -1,9 +1,12 @@
 {
     "scripts": {
         "build": "babel src -d dist",
-        "start": "rm -rf ./dist && npm run build && node ./dist/app.js"
+        "build-tests": "babel src/messenger -d dist-tests/src/messenger && babel test -d dist-tests/test/",
+        "start": "rm -rf ./dist && npm run build && node ./dist/app.js",
+        "test": "rm -rf dist-tests && npm run build-tests && mocha dist-tests/test"
     },
     "dependencies": {
+        "babel-runtime": "^6.26.0",
         "body-parser": "^1.18.2",
         "express": "^4.15.3",
         "lodash": "^4.17.4",
@@ -11,6 +14,13 @@
     },
     "devDependencies": {
         "babel-cli": "^6.26.0",
-        "babel-preset-env": "^1.6.1"
+        "babel-plugin-syntax-async-functions": "^6.13.0",
+        "babel-plugin-transform-async-to-generator": "^6.24.1",
+        "babel-plugin-transform-runtime": "^6.23.0",
+        "babel-preset-env": "^1.6.1",
+        "chai": "^4.1.2",
+        "expect": "^21.2.1",
+        "mocha": "^4.0.1",
+        "sinon": "^4.1.2"
     }
 }
