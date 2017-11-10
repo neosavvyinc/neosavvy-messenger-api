@@ -16,19 +16,19 @@ import _ from 'lodash';
 
 export const BASE_USER_ROUTE = '/users';
 
-export const GET_USERS = (request, response) => {
-    const users = UserService.findAllUsers();
+export const GET_USERS = async (request, response) => {
+    const users = await UserService.findAllUsers();
     response.json({ 'users': users });
 };
 
-export const NEW_USER = (request, response) => {
+export const NEW_USER = async (request, response) => {
     const username = request.body.username;
     const password = request.body.password;
     const user = {
         username,
         password
     };
-    const userId = UserService.addUser(user);
+    const userId = await UserService.addUser(user);
     response.json(_.merge({}, { userId }, user));
 };
 
