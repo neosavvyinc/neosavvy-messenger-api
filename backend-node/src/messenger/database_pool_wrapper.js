@@ -16,6 +16,7 @@ const findOrInitializePool = () => {
         return $DataBaseConnectionPool.db;
     } else {
         const pool = mysql.createPool({
+            // debug: true,
             host: 'db',
             user: 'root',
             password: 'testpass',
