@@ -1,12 +1,14 @@
-import DatabaseConnectionPool from './database_pool_wrapper';
+import findOrInitializePool from './database_pool_wrapper';
 
 import _ from 'lodash';
 
-export const findUserByUsername = () => {};
+export const findUserByUsername = () => {
+};
+
 export const findAllUsers = () => {
     const usersPromise = new Promise(
         (resolve, reject) => {
-            DatabaseConnectionPool.db.getConnection(async (err, connection) => {
+            findOrInitializePool().getConnection(async (err, connection) => {
                 if (err) {
                     reject(err)
                 }
@@ -30,7 +32,7 @@ export const findAllUsers = () => {
 export const insertUser = async (user) => {
     const usersPromise = new Promise(
         (resolve, reject) => {
-            DatabaseConnectionPool.db.getConnection((err, connection) => {
+            findOrInitializePool().getConnection((err, connection) => {
                 if (err) {
                     reject(err);
                 }

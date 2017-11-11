@@ -5,16 +5,25 @@
  *
  * This is a super-common problem for all server-side applications, surely someone has solved this
  */
-import mysql from 'mysql'
-const pool = mysql.createPool({
-    host: 'db',
-    user: 'root',
-    password: 'testpass',
-    database: 'challenge',
-});
+import mysql from 'mysql';
 
-const DataBaseConnectionPool = {
-    db: pool
+let $DataBaseConnectionPool = {
+    db: undefined
 };
 
-export default DataBaseConnectionPool
+const findOrInitializePool = () => {
+    if( $DataBaseConnectionPool.db ) {
+        return $DataBaseConnectionPool.db;
+    } else {
+        const pool = mysql.createPool({
+            host: 'db',
+            user: 'root',
+            password: 'testpass',
+            database: 'challenge',
+        });
+        $DataBaseConnectionPool.db = pool;
+        return $DataBaseConnectionPool.db;
+    }
+};
+
+export default findOrInitializePool
