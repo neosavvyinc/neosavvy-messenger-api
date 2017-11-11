@@ -9,4 +9,4 @@ COPY ./src ./src
 COPY ./test ./test
 
 RUN ["npm", "install"]
-CMD ["npm", "start"]
+CMD ["npm", "test"]
