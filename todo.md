@@ -8,6 +8,10 @@ Nodejs
 - [x] setup data access layer
 - [x] build integration tests
 - [x] build postman tests as integration test 
+- [ ] implement the user_data function for unique users
+- [ ] implement the message stack (message_data, message_service, message_routes)
+- [ ] write some tests for the message stack
+- [ ] write some postman integration tests for the message stack
 
 GoLang solution
 - [ ] setup service layer with identical api structure

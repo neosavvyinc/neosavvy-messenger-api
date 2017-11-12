@@ -10,7 +10,7 @@ import _ from 'lodash';
  * Immediately after delegation to the user_service happens for error
  * handling and interaction with data access layer
  *
- * This layer will not be heavily tested via Jasmine as other layers will.
+ * This layer will not be heavily tested via Mocha as other layers will.
  * This layer is primarily integration tested via PostMan
  */
 
@@ -39,11 +39,3 @@ export const UPDATE_USER = (request, response) => {
 export const DELETE_USER = (request, response) => {
     response.json({ 'status': 'delete - unimplemented' })
 };
-
-// export {
-//     BASE_USER_ROUTE,
-//     GET_USERS,
-//     NEW_USER,
-//     UPDATE_USER,
-//     DELETE_USER
-// }

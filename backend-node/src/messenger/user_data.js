@@ -41,7 +41,7 @@ export const insertUser = async (user) => {
                         connection.release();
                         reject(err);
                     }
-                    const returnValue = _.merge({}, {id: results.insertedId});
+                    const returnValue = _.merge({}, {id: results.insertId});
                     connection.release();
                     resolve(returnValue)
                 });
