@@ -9,6 +9,8 @@ services:
         volumes:
             - devmysqldb:/var/lib/mysql
             - ./db/sql:/docker-entrypoint-initdb.d
+        ports:
+            - "13306:3306"
 
     backend:
         build: backend-node

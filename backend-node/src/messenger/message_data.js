@@ -9,7 +9,7 @@ export const findMessages = async () => {
                 if (err) {
                     reject(err)
                 }
-                connection.query('SELECT * FROM messages',  (err, results, fields) => {
+                connection.query('SELECT * FROM messages_view',  (err, results, fields) => {
                     if (err) {
                         connection.release();
                         reject(err)
@@ -28,6 +28,29 @@ export const findMessages = async () => {
     return messagePromise;
 };
 
+export const insertParentMessage = async (parentMessage) => {
+    const messagePromise = new Promise(
+        (resolve, reject) => {
+            findOrInitializePool().getConnection((err, connection) => {
+                if (err) {
+                    reject(err);
+                }
+                connection.query('INSERT INTO messages SET ?', parentMessage, (err, results, fields) => {
+                    if (err) {
+                        connection.release();
+                        reject(err);
+                    }
+                    const returnValue = _.merge({}, {id: results.insertId});
+                    connection.release();
+                    resolve(returnValue)
+                });
+            });
+        }
+    );
+
+    return messagePromise
+};
+
 export const insertTextMessage = async (textMessage) => {
     const messagePromise = new Promise(
         (resolve, reject) => {
@@ -35,7 +58,53 @@ export const insertTextMessage = async (textMessage) => {
                 if (err) {
                     reject(err);
                 }
-                connection.query('INSERT INTO messages SET ?', textMessage, (err, results, fields) => {
+                connection.query('INSERT INTO messages_text SET ?', textMessage, (err, results, fields) => {
+                    if (err) {
+                        connection.release();
+                        reject(err);
+                    }
+                    const returnValue = _.merge({}, {id: results.insertId});
+                    connection.release();
+                    resolve(returnValue)
+                });
+            });
+        }
+    );
+
+    return messagePromise
+};
+
+export const insertVideoMessage = async (videoMessage) => {
+    const messagePromise = new Promise(
+        (resolve, reject) => {
+            findOrInitializePool().getConnection((err, connection) => {
+                if (err) {
+                    reject(err);
+                }
+                connection.query('INSERT INTO messages_video SET ?', videoMessage, (err, results, fields) => {
+                    if (err) {
+                        connection.release();
+                        reject(err);
+                    }
+                    const returnValue = _.merge({}, {id: results.insertId});
+                    connection.release();
+                    resolve(returnValue)
+                });
+            });
+        }
+    );
+
+    return messagePromise
+};
+
+export const insertImageMessage = async (imageMessage) => {
+    const messagePromise = new Promise(
+        (resolve, reject) => {
+            findOrInitializePool().getConnection((err, connection) => {
+                if (err) {
+                    reject(err);
+                }
+                connection.query('INSERT INTO messages_image SET ?', imageMessage, (err, results, fields) => {
                     if (err) {
                         connection.release();
                         reject(err);
