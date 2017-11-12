@@ -1,7 +1,4 @@
 import * as MessageService from './message_service';
-import _ from 'lodash';
-
-
 export const BASE_MESSAGE_ROUTE = '/messages';
 
 export const SEND_TEXT_MESSAGE = async (request, response) => {
@@ -10,7 +7,7 @@ export const SEND_TEXT_MESSAGE = async (request, response) => {
     const message = request.body.message;
 
     await MessageService.addTextMessage(senderId, receiverId, message);
-    response.send(200);
+    response.sendStatus(200);
 };
 
 export const SEND_IMAGE_MESSAGE = async (request, response) => {
@@ -22,7 +19,7 @@ export const SEND_IMAGE_MESSAGE = async (request, response) => {
     const image_width = request.body.image_width;
 
     await MessageService.addImageMessage(senderId, receiverId, message, link, image_height, image_width);
-    response.send(200);
+    response.sendStatus(200);
 };
 
 export const SEND_VIDEO_MESSAGE = async (request, response) => {
@@ -33,7 +30,7 @@ export const SEND_VIDEO_MESSAGE = async (request, response) => {
     const video_source = request.body.video_source;
 
     await MessageService.addVideoMessage(senderId, receiverId, message, video_length, video_source);
-    response.send(200);
+    response.sendStatus(200);
 };
 
 export const FETCH_MESSAGES = async (request, response) => {
