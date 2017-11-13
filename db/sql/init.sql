@@ -14,6 +14,7 @@ CREATE TABLE users (
 CREATE TABLE messages (
     id BIGINT NOT NULL AUTO_INCREMENT,
     type ENUM('text', 'image', 'video'),
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     sender_id MEDIUMINT NOT NULL,
     receiver_id MEDIUMINT NOT NULL,
     message TEXT DEFAULT NULL,
@@ -61,6 +62,7 @@ SELECT * FROM (
   SELECT
     m.id,
     type,
+    created,
     sender_id,
     receiver_id,
     message,
@@ -78,6 +80,7 @@ UNION ALL
   SELECT
     m.id,
     type,
+    created,
     sender_id,
     receiver_id,
     message,
@@ -95,6 +98,7 @@ UNION ALL
   SELECT
     m.id,
     type,
+    created,
     sender_id,
     receiver_id,
     message,

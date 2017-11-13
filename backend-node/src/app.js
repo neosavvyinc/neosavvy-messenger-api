@@ -37,7 +37,7 @@ app.delete(`${BASE_USER_ROUTE}/:id`, DELETE_USER);
 app.post(`${BASE_MESSAGE_ROUTE}/:senderId/text`, SEND_TEXT_MESSAGE);
 app.post(`${BASE_MESSAGE_ROUTE}/:senderId/image`, SEND_IMAGE_MESSAGE);
 app.post(`${BASE_MESSAGE_ROUTE}/:senderId/video`, SEND_VIDEO_MESSAGE);
-app.get(`${BASE_MESSAGE_ROUTE}/:userId`, FETCH_MESSAGES);
+app.get(`${BASE_MESSAGE_ROUTE}/:senderId/receiver/:receiverId`, FETCH_MESSAGES);
 
 /**
  * Health

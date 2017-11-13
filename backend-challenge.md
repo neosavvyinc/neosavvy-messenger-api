@@ -1,4 +1,4 @@
-ASAPP Backend Challenge
+Backend Challenge
 =======================
 
 Welcome to your challenge project!
@@ -24,6 +24,7 @@ Takes a sender, recipient, and message and saves that to the data store. For exa
 * Fetch Messages
 
 Takes two users and loads all messages sent between them. This call should also take two optional parameters in order to support pagination: the number of message to show per page and which page to load. For example, the endpoint might accept GET at /messages.
+Takes two users and loads all messages sent between them. This call should also take two optional parameters in order to support pagination: the number of message to show per page and which page to load. For example, the endpoint might accept GET at /messages.
 
 
 
@@ -38,7 +39,7 @@ Suggestions
 -----------
 
 * We very much value code quality and technical design. Think about the structure of your APIs, your data models, and the readability of your code.
-* At ASAPP, we use a lot of Go and MySQL. For the challenge, we’d like you to be able to work in languages with which you’re comfortable, but we do suggest the following:
+* We use a lot of Go and MySQL. For the challenge, we’d like you to be able to work in languages with which you’re comfortable, but we do suggest the following:
 ```
     Backend: Go, Python, Java, Node
     Database: SQL (including SQLite, MySQL, Postgres)
@@ -49,7 +50,7 @@ Suggestions
     golang.org/x/crypto/bcrypt
 ```
 * Please include a sample request (cURL commands, Postman collection, etc) for each of your API endpoints.
-* Please don't use the trademark ASAPP in the project. We hope the project is work that you're proud of, and we want you to be able to share it with others or make it public should you wish to.
+* We hope the project is work that you're proud of, and we want you to be able to share it with others or make it public should you wish to.
 * Have fun!
 
 

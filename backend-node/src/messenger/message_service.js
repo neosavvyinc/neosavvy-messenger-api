@@ -46,7 +46,7 @@ export const addVideoMessage = async (senderId, receiverId, message, video_lengt
     })
 };
 
-export const findMessages = async () => {
-    const messages = await MessageDataAccess.findMessages();
+export const findMessages = async (senderId, receiverId) => {
+    const messages = await MessageDataAccess.findMessages(senderId, receiverId);
     return messages;
 }

@@ -2,7 +2,8 @@
     "scripts": {
         "build": "babel src -d dist --source-maps inline",
         "build-tests": "babel src/messenger -d dist-tests/src/messenger && babel test -d dist-tests/test/ --source-maps inline",
-        "start": "rm -rf ./dist && npm run build && node --inspect=0.0.0.0:9229  ./dist/app.js",
+        "start": "rm -rf ./dist && npm run build && node ./dist/app.js",
+        "debug": "rm -rf ./dist && npm run build && node --inspect-brk=0.0.0.0:9229  ./dist/app.js",
         "test": "rm -rf dist-tests && npm run build-tests && mocha dist-tests/test"
     },
     "dependencies": {
