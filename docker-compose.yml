@@ -18,6 +18,7 @@ services:
             - db
         ports:
             - "18000:8000"
+            - "9229:9229"
 
 volumes:  
     devmysqldb:

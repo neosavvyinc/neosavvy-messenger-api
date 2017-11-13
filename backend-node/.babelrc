@@ -1,5 +1,6 @@
 {
   "presets": ["env"],
+  "sourceMaps": "inline",
   "plugins": [
     ["transform-runtime", {
       "polyfill": false,
