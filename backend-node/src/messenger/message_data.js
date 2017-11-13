@@ -1,15 +1,36 @@
 import findOrInitializePool from './database_pool_wrapper';
 
 import _ from 'lodash';
+import mysql from 'mysql';
 
-export const findMessages = async () => {
+export const findMessages = async ({
+    senderId,
+    receiverId,
+    pageNumber = undefined,
+    pageSize = undefined
+}) => {
     const messagePromise = new Promise(
         (resolve, reject) => {
             findOrInitializePool().getConnection(async (err, connection) => {
                 if (err) {
                     reject(err)
                 }
-                connection.query('SELECT * FROM messages_view',  (err, results, fields) => {
+                let sentAndReceivedQuerySQL= 'SELECT * FROM (' +
+                    '  SELECT *' +
+                    '  FROM messages_view sent' +
+                    '  WHERE sender_id = ? AND receiver_id = ?' +
+                    '  UNION ALL' +
+                    '  SELECT *' +
+                    '  FROM messages_view received' +
+                    '  WHERE sender_id = ? AND receiver_id = ?' +
+                    ') as conversation ORDER BY created DESC, id DESC';
+                let insertions = [senderId, receiverId, receiverId, senderId];
+                if(pageNumber && pageSize && pageNumber >= 0 && pageSize >= 0 ) {
+                    const offset = pageNumber * pageSize;
+                    sentAndReceivedQuerySQL = sentAndReceivedQuerySQL + ` LIMIT ${pageSize} OFFSET ${offset}`;
+                }
+                const senderAndReceiverQueryStatement = mysql.format(sentAndReceivedQuerySQL, insertions);
+                connection.query(senderAndReceiverQueryStatement,  (err, results, fields) => {
                     if (err) {
                         connection.release();
                         reject(err)
@@ -18,7 +39,6 @@ export const findMessages = async () => {
                     const resultObjects = _.map(results, (result) => {
                         return _.merge({}, result);
                     });
-                    console.log('resultObjects: ', resultObjects);
                     resolve(resultObjects);
                 });
             });

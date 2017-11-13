@@ -34,6 +34,11 @@ export const SEND_VIDEO_MESSAGE = async (request, response) => {
 };
 
 export const FETCH_MESSAGES = async (request, response) => {
-    const messages = await MessageService.findMessages();
+    const senderId = request.params.senderId;
+    const receiverId = request.params.receiverId;
+
+    const pageNumber = request.query.page;
+    const pageSize = request.query.size;
+    const messages = await MessageService.findMessages({senderId, receiverId, pageNumber, pageSize});
     response.json({'messages': messages});
 };

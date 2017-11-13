@@ -1,0 +1,276 @@
+{
+	"info": {
+		"name": "NeosavvyMessengerAPI",
+		"_postman_id": "16eb1548-1910-5c35-6e4c-59c213b14841",
+		"description": "### NEOSAVVY MESSENGER API \n\nCollection to help verify a variety of language implementations of the same API.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"description": "",
+			"item": [
+				{
+					"name": "Add User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"aparrish\",\n\t\"password\": \"testpass\"\n}"
+						},
+						"url": {
+							"raw": "http://{{hostname}}:{{port}}/users",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"users"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t'username': 'aparrish',\n\t'password': 'testpass'\n}"
+						},
+						"url": {
+							"raw": "http://{{hostname}}:{{port}}/users",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"users"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Messages",
+			"description": "",
+			"item": [
+				{
+					"name": "Send Message",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"receiverId\": 2,\n\t\"message\": \"tell curtis she is fat.\"\n}"
+						},
+						"url": {
+							"raw": "http://{{hostname}}:{{port}}/messages/1/text",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"messages",
+								"1",
+								"text"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Send Image",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"receiverId\": 2,\n\t\"message\": \"tell curtis she is fat.\",\n\t\"link\": \"http://www.neosavvy.com\",\n\t\"image_height\": \"100\",\n\t\"image_width\": \"299\"\n}"
+						},
+						"url": {
+							"raw": "http://{{hostname}}:{{port}}/messages/2/image",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"messages",
+								"2",
+								"image"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Send Video",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"receiverId\": 2,\n\t\"message\": \"tell curtis she is fat.\",\n\t\"link\": \"http://www.neosavvy.com\",\n\t\"image_height\": \"100\",\n\t\"image_width\": \"299\"\n}"
+						},
+						"url": {
+							"raw": "http://{{hostname}}:{{port}}/messages/2/image",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"messages",
+								"2",
+								"image"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Messages",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"curtis\",\n\t\"password\": \"testpass\"\n}"
+						},
+						"url": {
+							"raw": "http://{{hostname}}:{{port}}/messages/1",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"messages",
+								"1"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Messages (Paged)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"curtis\",\n\t\"password\": \"testpass\"\n}"
+						},
+						"url": {
+							"raw": "http://{{hostname}}:{{port}}/messages/1/receiver/2?page=0&size=2",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"messages",
+								"1",
+								"receiver",
+								"2"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0",
+									"equals": true
+								},
+								{
+									"key": "size",
+									"value": "2",
+									"equals": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Test",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"aparrish\",\n\t\"password\": \"testpass\"\n}"
+				},
+				"url": {
+					"raw": "http://{{hostname}}:{{port}}/test",
+					"protocol": "http",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"test"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
